@@ -13,6 +13,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using VK.WindowsPhone.SDK.API;
+using VK.WindowsPhone.SDK.API.Model;
+
 
 
 namespace teamproject
@@ -44,6 +47,22 @@ namespace teamproject
             // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
+        }
+
+        private void Button_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            VKRequest.Dispatch<VKList<VKAudio>>(new VKRequestParameters(
+                "audio.search",
+                "q",
+                "faded zhu"),
+                (result) =>
+                    {
+                        foreach (var item in result.Data.items)
+                        {
+                            audioView.Items.Add(item.title);
+                        }
+                    }
+            );
         }
     }
 }

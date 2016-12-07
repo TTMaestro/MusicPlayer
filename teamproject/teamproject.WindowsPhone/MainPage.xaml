@@ -9,6 +9,84 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="53*"/>
+            <RowDefinition Height="473*"/>
+            <RowDefinition Height="13*"/>
+            <RowDefinition Height="101*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="133*"/>
+            <ColumnDefinition Width="134*"/>
+            <ColumnDefinition Width="133*"/>
+        
+        </Grid.ColumnDefinitions>
+        <Image Source="images/player_rew.png" 
+               Stretch="UniformToFill" 
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Grid.Row="3" 
+               Grid.Column="0"
+               Width="80"
+               Height="80"/>
+        <Image Source="images/player_pause.png" 
+               Stretch="UniformToFill" 
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Grid.Row="3" 
+               Grid.Column="1"
+               Width="80"
+               Height="80"/>
+        <Image Source="images/player_fwd.png" 
+               Stretch="UniformToFill" 
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Grid.Row="3" 
+               Grid.Column="2"
+               Width="80"
+               Height="80"/>
+        <ListBox x:Name="audioView"
+                 Width="400"
+                 Grid.ColumnSpan="3"
+                 Grid.Row="1"
+                 HorizontalAlignment="Stretch"
+                 VerticalAlignment="Stretch"
+                 SelectionMode="Extended"
+                 Background="Transparent"
+                 Foreground="White"/>
+        <TextBox x:Name="textRequest"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"
+                 Width="390"
+                 TextWrapping="Wrap"
+                 PlaceholderText="Enter the name of song or singer"
+                 Text=""
+                 Grid.Row="0"
+                 Grid.ColumnSpan="3"
+                 Height="39"
+            />
+        <MediaElement x:Name="Player"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Left"
+                      Width="100"
+                      Height="100"/>
+        <ProgressBar x:Name="ProgressBar"
+                     Width="390"
+                     HorizontalAlignment="Stretch"
+                     Grid.ColumnSpan="3"
+                     Grid.Row="2"
+                     VerticalAlignment="Stretch"
+                     />
+        <Button x:Name="testRequest"
+                Grid.Row="1"
+                Grid.Column="1"
+                Content="text Request"
+                Tapped="Button_Tapped"
+                
+                />
+        <Grid.Background>
+            <ImageBrush Stretch="UniformToFill" ImageSource="images/background.png"/>
+        </Grid.Background>
+        
     </Grid>
 </Page>
