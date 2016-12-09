@@ -15,8 +15,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using VK.WindowsPhone.SDK.API;
 using VK.WindowsPhone.SDK.API.Model;
-
-
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace teamproject
 {
@@ -48,21 +47,76 @@ namespace teamproject
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
         }
+        public string GetTrueUrl(string InputString)
+        {
+            return InputString.Substring(0, InputString.IndexOf('?'));
+        }
+        private void TextBlock_Tapped(object sender, TappedRoutedEventArgs e)
+        { 
+            PlayTrack((sender as TextBlock).Tag.ToString());
+        }
 
-        private void Button_Tapped(object sender, TappedRoutedEventArgs e)
+        private void textRequest_TextChanged(object sender, TextChangedEventArgs e)
         {
             VKRequest.Dispatch<VKList<VKAudio>>(new VKRequestParameters(
-                "audio.search",
-                "q",
-                "faded zhu"),
-                (result) =>
-                    {
-                        foreach (var item in result.Data.items)
-                        {
-                            audioView.Items.Add(item.title);
-                        }
-                    }
-            );
+               "audio.search",
+               "q",
+               textRequest.Text),
+               (result) =>
+               {
+                   audioView.ItemsSource = result.Data.items;
+               }
+           );
+        }
+        
+        private void ImagePrevious_Tapped(object sender, TappedRoutedEventArgs e)
+        {       
+            if(audioView.SelectedIndex != 0 && (audioView.Items[--audioView.SelectedIndex] as VKAudio).url != null)
+            {
+                PlayTrack((audioView.Items[--audioView.SelectedIndex] as VKAudio).url);
+            }
+           
+        }
+
+        private void PlayTrack(string tempur1)
+        {
+            Player.Source = new Uri(GetTrueUrl(tempur1));
+            Player.Play();
+        }
+
+        private void ImageNext_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if((audioView.Items[++audioView.SelectedIndex] as VKAudio).url!=null)
+            {
+                PlayTrack((audioView.Items[++audioView.SelectedIndex] as VKAudio).url);
+            }
+            
+        }
+
+
+        private void ImagePlay_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if(Player.CurrentState == MediaElementState.Playing)
+            {
+                Player.Pause();
+                Image_Loaded(@"images/player_next.png");
+            }
+            else
+            {
+                Player.Play();
+                Image_Loaded(@"images/player_pause.png");
+            }
+        }
+        void Image_Loaded( string Icon)
+        {
+            BitmapImage bitmapImage = new BitmapImage();
+            bitmapImage.UriSource = new Uri(ImagePlay.BaseUri, Icon);
+            ImagePlay.Source = bitmapImage;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

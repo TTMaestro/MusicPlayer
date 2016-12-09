@@ -11,9 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teamproject.WindowsPhone", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VK.WindowsPhone.SDK-XAML", "..\..\..\..\Desktop\codding\teamproject\vk-windowsphone-sdk-master\VK.WindowsPhone.SDK-XAML\VK.WindowsPhone.SDK-XAML.csproj", "{A7E0FC88-A513-4981-8C2A-0106045E695B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teamproject.Windows", "teamproject\teamproject.Windows\teamproject.Windows.csproj", "{49AA18BD-C828-434C-9CE9-DBECBDFE0383}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		teamproject\teamproject.Shared\teamproject.Shared.projitems*{2f2e582d-8ea7-4d45-b197-95f933b4a360}*SharedItemsImports = 13
+		teamproject\teamproject.Shared\teamproject.Shared.projitems*{49aa18bd-c828-434c-9ce9-dbecbdfe0383}*SharedItemsImports = 4
 		teamproject\teamproject.Shared\teamproject.Shared.projitems*{bfcf6bfa-a7ae-46c3-8fbd-454723312285}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +70,30 @@ Global
 		{A7E0FC88-A513-4981-8C2A-0106045E695B}.Release|x64.Build.0 = Release|Any CPU
 		{A7E0FC88-A513-4981-8C2A-0106045E695B}.Release|x86.ActiveCfg = Release|Any CPU
 		{A7E0FC88-A513-4981-8C2A-0106045E695B}.Release|x86.Build.0 = Release|Any CPU
+		{49AA18BD-C828-434C-9CE9-DBECBDFE0383}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49AA18BD-C828-434C-9CE9-DBECBDFE0383}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49AA18BD-C828-434C-9CE9-DBECBDFE0383}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{49AA18BD-C828-434C-9CE9-DBECBDFE0383}.Debug|ARM.ActiveCfg = Debug|ARM
+		{49AA18BD-C828-434C-9CE9-DBECBDFE0383}.Debug|ARM.Build.0 = Debug|ARM
+		{49AA18BD-C828-434C-9CE9-DBECBDFE0383}.Debug|ARM.Deploy.0 = Debug|ARM
+		{49AA18BD-C828-434C-9CE9-DBECBDFE0383}.Debug|x64.ActiveCfg = Debug|x64
+		{49AA18BD-C828-434C-9CE9-DBECBDFE0383}.Debug|x64.Build.0 = Debug|x64
+		{49AA18BD-C828-434C-9CE9-DBECBDFE0383}.Debug|x64.Deploy.0 = Debug|x64
+		{49AA18BD-C828-434C-9CE9-DBECBDFE0383}.Debug|x86.ActiveCfg = Debug|x86
+		{49AA18BD-C828-434C-9CE9-DBECBDFE0383}.Debug|x86.Build.0 = Debug|x86
+		{49AA18BD-C828-434C-9CE9-DBECBDFE0383}.Debug|x86.Deploy.0 = Debug|x86
+		{49AA18BD-C828-434C-9CE9-DBECBDFE0383}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49AA18BD-C828-434C-9CE9-DBECBDFE0383}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49AA18BD-C828-434C-9CE9-DBECBDFE0383}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{49AA18BD-C828-434C-9CE9-DBECBDFE0383}.Release|ARM.ActiveCfg = Release|ARM
+		{49AA18BD-C828-434C-9CE9-DBECBDFE0383}.Release|ARM.Build.0 = Release|ARM
+		{49AA18BD-C828-434C-9CE9-DBECBDFE0383}.Release|ARM.Deploy.0 = Release|ARM
+		{49AA18BD-C828-434C-9CE9-DBECBDFE0383}.Release|x64.ActiveCfg = Release|x64
+		{49AA18BD-C828-434C-9CE9-DBECBDFE0383}.Release|x64.Build.0 = Release|x64
+		{49AA18BD-C828-434C-9CE9-DBECBDFE0383}.Release|x64.Deploy.0 = Release|x64
+		{49AA18BD-C828-434C-9CE9-DBECBDFE0383}.Release|x86.ActiveCfg = Release|x86
+		{49AA18BD-C828-434C-9CE9-DBECBDFE0383}.Release|x86.Build.0 = Release|x86
+		{49AA18BD-C828-434C-9CE9-DBECBDFE0383}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

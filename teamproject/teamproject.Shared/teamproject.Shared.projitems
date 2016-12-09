@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
@@ -15,5 +15,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)images\background.png" />
+    <Content Include="$(MSBuildThisFileDirectory)images\player_fwd.png" />
+    <Content Include="$(MSBuildThisFileDirectory)images\player_next.png" />
+    <Content Include="$(MSBuildThisFileDirectory)images\player_pause.png" />
+    <Content Include="$(MSBuildThisFileDirectory)images\player_rew.png" />
+    <Content Include="$(MSBuildThisFileDirectory)VKConfig.xml" />
   </ItemGroup>
 </Project>

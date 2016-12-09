@@ -5,9 +5,125 @@
     xmlns:local="using:teamproject"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="Page_Loaded">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="53*"/>
+            <RowDefinition Height="473*"/>
+            <RowDefinition Height="13*"/>
+            <RowDefinition Height="101*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="133*"/>
+            <ColumnDefinition Width="134*"/>
+            <ColumnDefinition Width="133*"/>
+
+        </Grid.ColumnDefinitions>
+        <ListView 
+            Grid.Row="3"
+            Grid.Column="0"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            SelectionMode="None"
+            >
+            <Image x:Name="ImagePrevious"
+               Source="images/player_rew.png" 
+               Stretch="UniformToFill" 
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Width="80"
+               Height="80"
+               Tapped="ImagePrevious_Tapped"/>
+        </ListView>
+        <ListView 
+            Grid.Row="3"
+            Grid.Column="1"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            SelectionMode="None">
+            <Image x:Name="ImagePlay"
+               Source="images/player_pause.png" 
+               Stretch="UniformToFill" 
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Width="80"
+               Height="80"
+               Tapped="ImagePlay_Tapped"/>
+        </ListView >
+        <ListView 
+            Grid.Row="3"
+            Grid.Column="2"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            SelectionMode="None">
+            <Image x:Name="ImageNext"
+               Source="images/player_fwd.png" 
+               Stretch="UniformToFill" 
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Width="80"
+               Height="80"
+               Tapped="ImageNext_Tapped"/>
+        </ListView>
+        <ListBox x:Name="audioView"
+                 Grid.Row="1"
+                 HorizontalAlignment="Stretch"
+                 VerticalAlignment="Stretch"
+                 SelectionMode="Extended"
+                 Background="Transparent"
+                 Foreground="White" Margin="8,0" Grid.ColumnSpan="3">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding title}"
+                               Tag="{Binding url}"
+                               Tapped="TextBlock_Tapped"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+
+        <TextBox x:Name="textRequest"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"
+                 Width="1346"
+                 TextWrapping="Wrap"
+                 PlaceholderText="Enter the name of song or singer"
+                 Text=""
+                 Grid.Row="0"
+                 Grid.ColumnSpan="3"
+                 Height="39" 
+                 TextChanged="textRequest_TextChanged"
+                 Background="Transparent" Margin="10,12"
+            />
+        <MediaElement x:Name="Player"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Left"
+                      Width="100"
+                      Height="100"/>
+        <ProgressBar x:Name="ProgressBar"
+                     Width="390"
+                     Maximum="{Binding ElementName=Player, Path=NaturalDuration.TimeSpan.TotalSeconds}"
+                     Value="{Binding ElementName=Player, Path=Position.TotalSeconds, Mode=TwoWay}"
+                     HorizontalAlignment="Stretch"
+                     Grid.ColumnSpan="3"
+                     Grid.Row="2"
+                     VerticalAlignment="Stretch"
+                     />
+        <ListView x:Name="listView" 
+                  Grid.ColumnSpan="2" 
+                  HorizontalAlignment="Left" 
+                  Height="100" 
+                  Margin="100,19,0,0" 
+                  Grid.RowSpan="2" 
+                  VerticalAlignment="Top" 
+                  Width="100"/>
+
+        <Grid.Background>
+            <ImageBrush Stretch="UniformToFill" ImageSource="images/background.png"/>
+        </Grid.Background>
 
     </Grid>
 </Page>
