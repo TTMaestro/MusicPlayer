@@ -68,6 +68,9 @@ namespace teamproject
                }
            );
         }
+
+
+
         
         private void ImagePrevious_Tapped(object sender, TappedRoutedEventArgs e)
         {       
