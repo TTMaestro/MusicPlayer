@@ -22,21 +22,20 @@ namespace teamproject
    
     public sealed partial class MainPage : Page
     {
+
         private List<string> _scope = new List<string> { VKScope.AUDIO, VKScope.STATUS};
+
         public MainPage()
         {
             InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Required;
+            var encrypted = "NTc2NTA4Mg==";
+            string decrypted = Convert.FromBase64String(encrypted).ToString();
             VKSDK.Initialize("5765082");
             VKSDK.Authorize(_scope, false, false);
             
         }
 
-        /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
-        /// </summary>
-        /// <param name="e">Event data that describes how this page was reached.
-        /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             // TODO: Prepare page for display here.
@@ -47,10 +46,24 @@ namespace teamproject
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
         }
+
+        void Image_Loaded(string Icon)
+        {
+            BitmapImage bitmapImage = new BitmapImage();
+            bitmapImage.UriSource = new Uri(ImagePlay.BaseUri, Icon);
+            ImagePlay.Source = bitmapImage;
+        }
+        private void PlayTrack(string tempur1)
+        {
+            Player.Source = new Uri(GetTrueUrl(tempur1));
+            Player.Play();
+        }
+
         public string GetTrueUrl(string InputString)
         {
             return InputString.Substring(0, InputString.IndexOf('?'));
         }
+
         private void TextBlock_Tapped(object sender, TappedRoutedEventArgs e)
         { 
             PlayTrack((sender as TextBlock).Tag.ToString());
@@ -58,6 +71,7 @@ namespace teamproject
 
         private void textRequest_TextChanged(object sender, TextChangedEventArgs e)
         {
+            
             VKRequest.Dispatch<VKList<VKAudio>>(new VKRequestParameters(
                "audio.search",
                "q",
@@ -69,33 +83,42 @@ namespace teamproject
            );
         }
 
-
-
-        
         private void ImagePrevious_Tapped(object sender, TappedRoutedEventArgs e)
         {       
-            if(audioView.SelectedIndex != 0 && (audioView.Items[--audioView.SelectedIndex] as VKAudio).url != null)
-            {
-                PlayTrack((audioView.Items[--audioView.SelectedIndex] as VKAudio).url);
+            if(audioView.SelectedIndex != 0)
+            { 
+                if((audioView.Items[--audioView.SelectedIndex] as VKAudio).url != null)
+                {
+                    PlayTrack((audioView.Items[--audioView.SelectedIndex] as VKAudio).url);
+                }
+                else
+                {
+                    int previous = --audioView.SelectedIndex;
+                    PlayTrack((audioView.Items[--previous] as VKAudio).url);
+                }
+                
             }
            
         }
 
-        private void PlayTrack(string tempur1)
-        {
-            Player.Source = new Uri(GetTrueUrl(tempur1));
-            Player.Play();
-        }
+       
 
         private void ImageNext_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if((audioView.Items[++audioView.SelectedIndex] as VKAudio).url!=null)
+            if((audioView.Items[++audioView.SelectedIndex] as VKAudio).url !=null && audioView.SelectedIndex!=28)
             {
-                PlayTrack((audioView.Items[++audioView.SelectedIndex] as VKAudio).url);
+                if ((audioView.Items[++audioView.SelectedIndex] as VKAudio).url != null)
+                {
+                    PlayTrack((audioView.Items[++audioView.SelectedIndex] as VKAudio).url);
+                }
+                else
+                {
+                    int next = ++audioView.SelectedIndex;
+                    PlayTrack((audioView.Items[++next] as VKAudio).url);
+                }
             }
             
         }
-
 
         private void ImagePlay_Tapped(object sender, TappedRoutedEventArgs e)
         {
@@ -109,12 +132,6 @@ namespace teamproject
                 Player.Play();
                 Image_Loaded(@"images/player_pause.png");
             }
-        }
-        void Image_Loaded( string Icon)
-        {
-            BitmapImage bitmapImage = new BitmapImage();
-            bitmapImage.UriSource = new Uri(ImagePlay.BaseUri, Icon);
-            ImagePlay.Source = bitmapImage;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

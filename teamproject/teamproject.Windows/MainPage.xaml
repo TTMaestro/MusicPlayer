@@ -34,7 +34,7 @@
                Stretch="UniformToFill" 
                HorizontalAlignment="Center"
                VerticalAlignment="Center"
-               Width="80"
+               Width="78"
                Height="80"
                Tapped="ImagePrevious_Tapped"/>
         </ListView>
@@ -45,7 +45,7 @@
             HorizontalAlignment="Center"
             SelectionMode="None">
             <Image x:Name="ImagePlay"
-               Source="images/player_pause.png" 
+               Source="images/player_next.png" 
                Stretch="UniformToFill" 
                HorizontalAlignment="Center"
                VerticalAlignment="Center"
@@ -104,13 +104,12 @@
                       Width="100"
                       Height="100"/>
         <ProgressBar x:Name="ProgressBar"
-                     Width="390"
                      Maximum="{Binding ElementName=Player, Path=NaturalDuration.TimeSpan.TotalSeconds}"
                      Value="{Binding ElementName=Player, Path=Position.TotalSeconds, Mode=TwoWay}"
                      HorizontalAlignment="Stretch"
                      Grid.ColumnSpan="3"
                      Grid.Row="2"
-                     VerticalAlignment="Stretch"
+                     VerticalAlignment="Stretch" Margin="10,0"
                      />
         <ListView x:Name="listView" 
                   Grid.ColumnSpan="2" 

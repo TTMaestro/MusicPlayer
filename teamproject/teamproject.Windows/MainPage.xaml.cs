@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Navigation;
 using VK.WindowsPhone.SDK.API;
 using VK.WindowsPhone.SDK.API.Model;
 using Windows.UI.Xaml.Media.Imaging;
+using System.Text;
 
 namespace teamproject
 {
@@ -25,8 +26,6 @@ namespace teamproject
         private List<string> _scope = new List<string> { VKScope.AUDIO, VKScope.STATUS};
         public MainPage()
         {
-            InitializeComponent();
-            NavigationCacheMode = NavigationCacheMode.Required;
             VKSDK.Initialize("5765082");
             VKSDK.Authorize(_scope, false, false);
             
@@ -70,12 +69,21 @@ namespace teamproject
         }
         
         private void ImagePrevious_Tapped(object sender, TappedRoutedEventArgs e)
-        {       
-            if(audioView.SelectedIndex != 0)
+        {
+            if (audioView.SelectedIndex != 0)
             {
-                PlayTrack((audioView.Items[--audioView.SelectedIndex] as VKAudio).url);
+                if ((audioView.Items[--audioView.SelectedIndex] as VKAudio).url != null)
+                {
+                    PlayTrack((audioView.Items[--audioView.SelectedIndex] as VKAudio).url);
+                }
+                else
+                {
+                    int previous = --audioView.SelectedIndex;
+                    PlayTrack((audioView.Items[--previous] as VKAudio).url);
+                }
+
             }
-           
+
         }
 
         private void PlayTrack(string tempur1)
@@ -86,7 +94,18 @@ namespace teamproject
 
         private void ImageNext_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            PlayTrack((audioView.Items[++audioView.SelectedIndex] as VKAudio).url);
+            if ((audioView.Items[++audioView.SelectedIndex] as VKAudio).url != null && audioView.SelectedIndex != 28)
+            {
+                if ((audioView.Items[++audioView.SelectedIndex] as VKAudio).url != null)
+                {
+                    PlayTrack((audioView.Items[++audioView.SelectedIndex] as VKAudio).url);
+                }
+                else
+                {
+                    int next = ++audioView.SelectedIndex;
+                    PlayTrack((audioView.Items[++next] as VKAudio).url);
+                }
+            }
         }
 
 
