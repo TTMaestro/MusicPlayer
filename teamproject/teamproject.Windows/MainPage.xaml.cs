@@ -49,6 +49,20 @@ namespace teamproject
         public string GetTrueUrl(string InputString)
         {
             return InputString.Substring(0, InputString.IndexOf('?'));
+
+        }
+        private int Url_Validation(int index)
+        {
+            index = audioView.SelectedIndex;
+            if ((audioView.Items[audioView.SelectedIndex] as VKAudio).url == null)
+            {
+                while ((audioView.Items[audioView.SelectedIndex] as VKAudio).url != null)
+                {
+                    index += 1;             
+                }
+                return index;
+            }
+            return index;
         }
         private void TextBlock_Tapped(object sender, TappedRoutedEventArgs e)
         { 
@@ -70,19 +84,7 @@ namespace teamproject
         
         private void ImagePrevious_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if (audioView.SelectedIndex != 0)
-            {
-                if ((audioView.Items[--audioView.SelectedIndex] as VKAudio).url != null)
-                {
-                    PlayTrack((audioView.Items[--audioView.SelectedIndex] as VKAudio).url);
-                }
-                else
-                {
-                    int previous = --audioView.SelectedIndex;
-                    PlayTrack((audioView.Items[--previous] as VKAudio).url);
-                }
-
-            }
+            PlayTrack((audioView.Items[Url_Validation(--audioView.SelectedIndex)] as VKAudio).url);
 
         }
 
@@ -94,18 +96,7 @@ namespace teamproject
 
         private void ImageNext_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if ((audioView.Items[++audioView.SelectedIndex] as VKAudio).url != null && audioView.SelectedIndex != 28)
-            {
-                if ((audioView.Items[++audioView.SelectedIndex] as VKAudio).url != null)
-                {
-                    PlayTrack((audioView.Items[++audioView.SelectedIndex] as VKAudio).url);
-                }
-                else
-                {
-                    int next = ++audioView.SelectedIndex;
-                    PlayTrack((audioView.Items[++next] as VKAudio).url);
-                }
-            }
+            PlayTrack((audioView.Items[Url_Validation(audioView.SelectedIndex)] as VKAudio).url);
         }
 
 
@@ -132,6 +123,19 @@ namespace teamproject
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        private void Player_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            if ((audioView.Items[++audioView.SelectedIndex] as VKAudio).url != null)
+            {
+                PlayTrack((audioView.Items[++audioView.SelectedIndex] as VKAudio).url);
+            }
+            else
+            {
+                int next = ++audioView.SelectedIndex;
+                PlayTrack((audioView.Items[++next] as VKAudio).url);
+            }
         }
     }
 }

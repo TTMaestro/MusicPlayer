@@ -99,7 +99,8 @@
                       VerticalAlignment="Center"
                       HorizontalAlignment="Left"
                       Width="100"
-                      Height="100"/>
+                      Height="100"
+                      MediaEnded="Player_MediaEnded"/>
         <ProgressBar x:Name="ProgressBar"
                      Width="390"
                      Maximum="{Binding ElementName=Player, Path=NaturalDuration.TimeSpan.TotalSeconds}"
