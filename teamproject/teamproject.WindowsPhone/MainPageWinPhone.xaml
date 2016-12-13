@@ -110,6 +110,7 @@
                      Grid.Row="2"
                      VerticalAlignment="Stretch"
                      />
+        
         <Grid.Background>
             <ImageBrush Stretch="UniformToFill" ImageSource="images/background.png"/>
         </Grid.Background>

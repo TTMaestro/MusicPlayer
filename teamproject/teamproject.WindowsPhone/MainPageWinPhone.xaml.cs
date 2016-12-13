@@ -35,6 +35,7 @@ namespace teamproject
             VKSDK.Authorize(_scope, false, false);
             
         }
+
         private int Url_Validation(int index)
         {
             index = audioView.SelectedIndex;
@@ -48,6 +49,7 @@ namespace teamproject
             }
             return index;
         }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             // TODO: Prepare page for display here.
@@ -65,6 +67,7 @@ namespace teamproject
             bitmapImage.UriSource = new Uri(ImagePlay.BaseUri, Icon);
             ImagePlay.Source = bitmapImage;
         }
+
         private void PlayTrack(string tempur1)
         {
             Player.Source = new Uri(GetTrueUrl(tempur1));
