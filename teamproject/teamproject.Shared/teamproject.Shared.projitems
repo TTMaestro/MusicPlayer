@@ -24,10 +24,10 @@
     <Content Include="$(MSBuildThisFileDirectory)Assets\StoreLogo.scale-240.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\WideLogo.scale-240.png" />
     <Content Include="$(MSBuildThisFileDirectory)images\background.png" />
-    <Content Include="$(MSBuildThisFileDirectory)images\player_fwd.png" />
-    <Content Include="$(MSBuildThisFileDirectory)images\player_next.png" />
-    <Content Include="$(MSBuildThisFileDirectory)images\player_pause.png" />
-    <Content Include="$(MSBuildThisFileDirectory)images\player_rew.png" />
+    <Content Include="$(MSBuildThisFileDirectory)images\left.png" />
+    <Content Include="$(MSBuildThisFileDirectory)images\pause.png" />
+    <Content Include="$(MSBuildThisFileDirectory)images\play.png" />
+    <Content Include="$(MSBuildThisFileDirectory)images\right.png" />
     <Content Include="$(MSBuildThisFileDirectory)VKConfig.xml" />
   </ItemGroup>
 </Project>

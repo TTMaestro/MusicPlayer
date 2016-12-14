@@ -29,12 +29,12 @@
             HorizontalAlignment="Center"
             >
             <Image x:Name="ImagePrevious"
-               Source="images/player_rew.png" 
+               Source="images/left.png" 
                Stretch="UniformToFill" 
                HorizontalAlignment="Center"
                VerticalAlignment="Center"
-               Width="80"
-               Height="80"
+               Width="105"
+               Height="92"
                Tapped="ImagePrevious_Tapped"/>
         </ListView>
         <ListView 
@@ -43,12 +43,12 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Center">
             <Image x:Name="ImagePlay"
-               Source="images/player_next.png" 
+               Source="images/play.png" 
                Stretch="UniformToFill" 
                HorizontalAlignment="Center"
                VerticalAlignment="Center"
-               Width="80"
-               Height="80"
+               Width="115"
+               Height="100"
                Tapped="ImagePlay_Tapped"/>
         </ListView >
         <ListView 
@@ -57,12 +57,12 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Center">
             <Image x:Name="ImageNext"
-               Source="images/player_fwd.png" 
+               Source="images/right.png" 
                Stretch="UniformToFill" 
                HorizontalAlignment="Center"
                VerticalAlignment="Center"
-               Width="80"
-               Height="80"
+               Width="105"
+               Height="92"
                Tapped="ImageNext_Tapped"/>
         </ListView>
         <ListBox x:Name="audioView"
@@ -110,7 +110,7 @@
                      Grid.Row="2"
                      VerticalAlignment="Stretch"
                      />
-        
+
         <Grid.Background>
             <ImageBrush Stretch="UniformToFill" ImageSource="images/background.png"/>
         </Grid.Background>

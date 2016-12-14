@@ -29,8 +29,6 @@ namespace teamproject
         {
             InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Required;
-            var encrypted = "NTc2NTA4Mg==";
-            string decrypted = Convert.FromBase64String(encrypted).ToString();
             VKSDK.Initialize("5765082");
             VKSDK.Authorize(_scope, false, false);
             
@@ -82,7 +80,7 @@ namespace teamproject
         private void TextBlock_Tapped(object sender, TappedRoutedEventArgs e)
         { 
             PlayTrack((sender as TextBlock).Tag.ToString());
-            Image_Loaded(@"images/player_pause.png");
+            Image_Loaded(@"images/pause.png");
         }
 
         private void textRequest_TextChanged(object sender, TextChangedEventArgs e)
@@ -101,7 +99,8 @@ namespace teamproject
 
         private void ImagePrevious_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if (audioView.SelectedIndex != 0)
+
+            if (audioView.SelectedIndex != 0 && audioView.Items.Count != 0)
             {
                 PlayTrack((audioView.Items[Url_Validation(--audioView.SelectedIndex)] as VKAudio).url);
             }
@@ -111,7 +110,7 @@ namespace teamproject
 
         private void ImageNext_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if(audioView.SelectedIndex != audioView.Items.Count)
+            if(audioView.SelectedIndex != audioView.Items.Count && audioView.Items.Count != 0)
             {
                 PlayTrack((audioView.Items[Url_Validation(++audioView.SelectedIndex)] as VKAudio).url);
             }
@@ -119,26 +118,38 @@ namespace teamproject
 
         private void ImagePlay_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if(Player.CurrentState == MediaElementState.Playing)
+            if (audioView.Items.Count != 0)
             {
-                Player.Pause();
-                Image_Loaded(@"images/player_next.png");
+                if (Player.CurrentState == MediaElementState.Playing)
+                {
+                    Player.Pause();
+                    Image_Loaded(@"images/play.png");
+                }
+                else
+                {
+                    Player.Play();
+                    Image_Loaded(@"images/pause.png");
+                }
             }
-            else
-            {
-                Player.Play();
-                Image_Loaded(@"images/player_pause.png");
-            }
+           
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)  
         {
-            
+            VKRequest.Dispatch<VKList<VKUser>>(new VKRequestParameters("audio.get"), (res) =>
+            {
+             var data = res.Data;
+             audioView.ItemsSource = res.Data.items;
+            });
         }
 
         private void Player_MediaEnded(object sender, RoutedEventArgs e)
         {
-            PlayTrack((audioView.Items[Url_Validation(++audioView.SelectedIndex)] as VKAudio).url);
+            if (audioView.Items.Count != 0)
+            {
+                PlayTrack((audioView.Items[Url_Validation(++audioView.SelectedIndex)] as VKAudio).url);
+            }
+                
         }
     }
 }
