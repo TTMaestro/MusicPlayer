@@ -23,7 +23,7 @@ namespace teamproject
     public sealed partial class MainPage : Page
     {
 
-        private List<string> _scope = new List<string> { VKScope.AUDIO, VKScope.STATUS};
+        private List<string> _scope = new List<string> { VKScope.AUDIO };
 
         public MainPage()
         {
