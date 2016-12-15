@@ -29,8 +29,6 @@ namespace teamproject
         {
             InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Required;
-            var encrypted = "NTc2NTA4Mg==";
-            string decrypted = Convert.FromBase64String(encrypted).ToString();
             VKSDK.Initialize("5765082");
             VKSDK.Authorize(_scope, false, false);
             
@@ -133,7 +131,11 @@ namespace teamproject
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            VKRequest.Dispatch<VKList<VKUser>>(new VKRequestParameters("audio.get"), (res) =>
+            {
+                var data = res.Data;
+                audioView.ItemsSource = res.Data.items;
+            });
         }
 
         private void Player_MediaEnded(object sender, RoutedEventArgs e)

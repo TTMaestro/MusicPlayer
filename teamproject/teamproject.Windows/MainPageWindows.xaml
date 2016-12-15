@@ -66,14 +66,12 @@
                Tapped="ImageNext_Tapped"/>
         </ListView>
         <ListBox x:Name="audioView"
-                 Width="400"
-                 Grid.ColumnSpan="3"
                  Grid.Row="1"
                  HorizontalAlignment="Stretch"
                  VerticalAlignment="Stretch"
                  SelectionMode="Extended"
                  Background="Transparent"
-                 Foreground="White">
+                 Foreground="White" Grid.Column="1" Margin="8,0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding title}"
@@ -82,18 +80,27 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-
+        <Image x:Name="Advertisement"
+               Grid.Row="1"
+               Grid.Column="0"
+               
+            />
+        <Image x:Name="Advertisement_1"
+               Grid.Row="1"
+               Grid.Column="2"
+               
+            />
 
         <TextBox x:Name="textRequest"
                  HorizontalAlignment="Center"
                  VerticalAlignment="Center"
-                 Width="390"
+                 Width="1366"
                  TextWrapping="Wrap"
                  PlaceholderText="Enter the name of song or singer"
                  Text=""
                  Grid.Row="0"
                  Grid.ColumnSpan="3"
-                 Height="39" TextChanged="textRequest_TextChanged"
+                 Height="41" TextChanged="textRequest_TextChanged" Margin="0,10,0,12"
             />
         <MediaElement x:Name="Player"
                       VerticalAlignment="Center"
@@ -102,7 +109,6 @@
                       Height="100"
                       MediaEnded="Player_MediaEnded"/>
         <ProgressBar x:Name="ProgressBar"
-                     Width="390"
                      Maximum="{Binding ElementName=Player, Path=NaturalDuration.TimeSpan.TotalSeconds}"
                      Value="{Binding ElementName=Player, Path=Position.TotalSeconds, Mode=TwoWay}"
                      HorizontalAlignment="Stretch"
