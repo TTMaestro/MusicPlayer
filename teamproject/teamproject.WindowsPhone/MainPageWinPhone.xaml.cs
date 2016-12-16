@@ -41,9 +41,9 @@ namespace teamproject
             {
                 while ((audioView.Items[audioView.SelectedIndex] as VKAudio).url != null)
                 {
-                    index += 1;
+                    audioView.SelectedIndex += 1;
                 }
-                return index;
+                return audioView.SelectedIndex;
             }
             return index;
         }
